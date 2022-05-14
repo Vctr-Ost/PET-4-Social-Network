@@ -3,28 +3,19 @@ import axios from "axios";
 import profileImg from '../../assets/images/profile_image.jpg'
 
 function Users(props) {
-    // debugger;
-    if (props.users.length === 0) {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-            // debugger;
-            props.setUsers(response.data.items);
-        })
 
-
-        // props.setUsers(
-        //     [
-        //         { id: 1, photoUrl: 'https://images.genius.com/0d821195b5a8d0a775477ca24ee591ab.552x552x1.jpg',
-        //             followed: false, fullName: 'Anton', status: 'I am a big boss', location: { city: 'Kyiv', country: 'Ukraine' } },
-        //         { id: 2, photoUrl: 'https://images.genius.com/0d821195b5a8d0a775477ca24ee591ab.552x552x1.jpg',
-        //             followed: true, fullName: 'Andrew', status: 'I am a big boss too', location: { city: 'Cherkasy', country: 'Ukraine' } },
-        //         { id: 3, photoUrl: 'https://images.genius.com/0d821195b5a8d0a775477ca24ee591ab.552x552x1.jpg',
-        //             followed: false, fullName: 'Dimych', status: 'I am a big boss too', location: { city: 'Lviv', country: 'Ukraine' } },
-        //     ]
-        // );
+    function getUsers() {
+        if (props.users.length === 0) {
+            axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+                // debugger;
+                props.setUsers(response.data.items);
+            })
+        }
     }
 
     return (
         <div className={style.usersBlock}>
+            <button onClick={getUsers}>Get Users</button>
             {
                 props.users.map(user => {
                     return (
