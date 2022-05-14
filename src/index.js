@@ -9,7 +9,6 @@ import {Provider} from "react-redux";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 function rerenderEntireTree() {
-    console.log(store.getState());
     root.render(
         <React.StrictMode>
             <Provider store={store}>
