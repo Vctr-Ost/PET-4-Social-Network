@@ -8,7 +8,7 @@ function Users(props) {
     let pagesCount = Math.ceil(props.totalUsersCount / props.usersCount);
     let pagesCountArr = [];
     for (let i = 1; i <= pagesCount; i++) {
-        pagesCountArr.push(i);
+        i === 10 ? i = pagesCount - 5 : pagesCountArr.push(i);
     }
 
     return (

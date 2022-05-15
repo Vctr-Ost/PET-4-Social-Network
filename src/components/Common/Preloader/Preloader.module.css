@@ -1,0 +1,9 @@
+.imgBlock {
+    width: 100%;
+    height: 100%;
+}
+.image {
+    height: 60%;
+    display: block;
+    margin: 0 auto;
+}
