@@ -1,10 +1,14 @@
 import {connect} from "react-redux";
 import Users from "./Users";
-import {followToggle, setUsers} from "../../redux/usersReducer";
+import {changeCurrentPage, followToggle, setTotalUsersCount, setUsers} from "../../redux/usersReducer";
 
 function mapStateToProps (state) {
+    // debugger;
     return {
         users: state.usersPage.users,
+        currentPage: state.usersPage.currentPage,
+        totalUsersCount: state.usersPage.totalUsersCount,
+        usersCount: state.usersPage.usersCount,
     }
 }
 
@@ -15,6 +19,12 @@ function mapDispatchToProps (dispatch) {
         },
         setUsers: (users) => {
             dispatch( setUsers(users) );
+        },
+        changeCurrentPage: (num) => {
+            dispatch( changeCurrentPage(num) );
+        },
+        setTotalUsersCount: (num) => {
+            dispatch ( setTotalUsersCount(num) );
         },
     }
 }

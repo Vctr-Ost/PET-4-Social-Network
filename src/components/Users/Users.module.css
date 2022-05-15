@@ -10,3 +10,15 @@
 button {
     display: block;
 }
+
+.nonSelected {
+    cursor: pointer;
+    font-size: 20px;
+    padding: 5px;
+}
+.selected {
+    cursor: pointer;
+    font-size: 24px;
+    padding: 5px;
+    color: #931414;
+}
