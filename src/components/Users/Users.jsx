@@ -1,6 +1,7 @@
 import style from "./Users.module.css";
 import profileImg from "../../assets/images/profile_image.jpg";
 import React from "react";
+import {NavLink} from "react-router-dom";
 
 
 function Users(props) {
@@ -28,9 +29,11 @@ function Users(props) {
                     return (
                         <>
                             <div>
-                                <img className={style.userPhoto}
-                                     src={(user.photos.small !== null) ? user.photos.small : profileImg}
-                                     alt='userPhoto'/>
+                                <NavLink to={'/profile/' + user.id}>
+                                    <img className={style.userPhoto}
+                                         src={(user.photos.small !== null) ? user.photos.small : profileImg}
+                                         alt='userPhoto'/>
+                                </NavLink>
                                 <button onClick={() => {
                                     props.followToggle(user.id)
                                 }}> {user.followed === true ? 'Unfollow' : 'Follow'} </button>

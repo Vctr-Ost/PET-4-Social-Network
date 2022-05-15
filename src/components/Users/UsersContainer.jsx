@@ -55,26 +55,6 @@ function mapStateToProps(state) {
     }
 }
 
-// function mapDispatchToProps(dispatch) {
-//     return {
-//         followToggle: (ID) => {
-//             dispatch(followToggle(ID));
-//         },
-//         setUsers: (users) => {
-//             dispatch(setUsers(users));
-//         },
-//         changeCurrentPage: (num) => {
-//             dispatch(changeCurrentPage(num));
-//         },
-//         setTotalUsersCount: (num) => {
-//             dispatch(setTotalUsersCount(num));
-//         },
-//         toggleIsFetching: (boolean) => {
-//             dispatch(toggleIsFetching(boolean));
-//         }
-//     }
-// }
 
-export default connect(mapStateToProps, { followToggle: followToggle, setUsers: setUsers,
-    changeCurrentPage: changeCurrentPage, setTotalUsersCount: setTotalUsersCount,
-    toggleIsFetching: toggleIsFetching, })(UsersAPI);
+export default connect(mapStateToProps, { followToggle, setUsers,
+    changeCurrentPage, setTotalUsersCount, toggleIsFetching, })(UsersAPI);

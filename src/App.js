@@ -9,6 +9,7 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Friends from "./components/Friends/Friends";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 
 
 function App(props) {
@@ -19,7 +20,7 @@ function App(props) {
                 <Navbar/>
                 <div className='App-content'>
                     <Routes>
-                        <Route path='/profile' element={<Profile state={props.state}/>} />
+                        <Route path='/profile/*' element={<ProfileContainer />} />
                         <Route path='/dialogs/*' element={<DialogsContainer />} />
                         <Route path='/users' element={<UsersContainer />} />
                         <Route path='/news' element={<News/>}/>

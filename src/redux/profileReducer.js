@@ -1,5 +1,6 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT';
+const UPDATE_CURRENT_PROFILE = 'UPDATE_CURRENT_PROFILE';
 
 let initialState = {
     myPostsData: [
@@ -9,6 +10,7 @@ let initialState = {
         { id: 4, text: 'KOKOJAMBO - KOKOJAMBO', likeCount: 56 },
     ],
     newPostText: '',
+    currentProfile: null,
 };
 
 function profileReducer(state = initialState, action) {
@@ -30,6 +32,11 @@ function profileReducer(state = initialState, action) {
                 ...state,
                 newPostText: action.text,
             };
+        case UPDATE_CURRENT_PROFILE:
+            return {
+                ...state,
+                currentProfile: action.profile,
+            };
         default: return state;
     }
 }
@@ -39,6 +46,9 @@ export function addPostActionCreator() {
 }
 export function updatePostTextActionCreator(text) {
     return { type: UPDATE_POST_TEXT, text: text }
+}
+export function updateCurrentProfile(profile) {
+    return {type: UPDATE_CURRENT_PROFILE, profile}
 }
 
 export default profileReducer;

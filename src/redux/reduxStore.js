@@ -11,6 +11,7 @@ let reducers = combineReducers({
     usersPage: usersReducer,
 });
 
+//* ЩОБ МОЖНА БУЛО В КОНСОЛІ ПРОПИСАТЬ          store.getstate()
 let store = createStore(reducers);
 window.store = store;
 

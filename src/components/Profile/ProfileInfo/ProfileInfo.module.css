@@ -1,13 +1,23 @@
+.headImg {
+    max-width: 100%;
+}
 .profInfo {
     display: flex;
     gap: 50px;
     margin: 0 0 40px;
+    padding: 30px;
 }
 .avatar {
     max-width: 200px;
+    max-height: 200px;
+    object-fit: cover;
     border-radius: 50%;
     border: 3px solid black;
     overflow: hidden;
+}
+.avatarImg {
+    width: 100%;
+    height: 100%;
 }
 .name {
     font-size: 36px;
