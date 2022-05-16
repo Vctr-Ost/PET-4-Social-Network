@@ -15,7 +15,9 @@ import Preloader from "../Common/Preloader/Preloader";
 class UsersAPI extends React.Component {
     componentDidMount() {
         this.props.toggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.usersCount}&page=${this.props.currentPage}`).then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.usersCount}&page=${this.props.currentPage}`,{
+            withCredentials: true,
+        }).then(response => {
             this.props.toggleIsFetching(false);
             this.props.setUsers(response.data.items);
             this.props.setTotalUsersCount(response.data.totalCount);
@@ -25,7 +27,9 @@ class UsersAPI extends React.Component {
     pagesCountOnClick = (num) => {
         this.props.changeCurrentPage(num);
         this.props.toggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.usersCount}&page=${num}`).then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.usersCount}&page=${num}`, {
+            withCredentials: true,
+        }).then(response => {
             this.props.toggleIsFetching(false);
             this.props.setUsers(response.data.items);
             this.props.setTotalUsersCount(response.data.totalCount);
