@@ -2,7 +2,6 @@ import style from './ProfileInfo.module.css'
 import userNonPhoto from '../../../assets/images/profile_image.jpg'
 
 function ProfileInfo(props) {
-    // debugger
     return (
         <>
             <div>

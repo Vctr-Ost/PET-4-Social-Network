@@ -7,32 +7,30 @@ import {
     toggleIsFetching
 } from "../../redux/usersReducer";
 import React from "react";
-import axios from "axios";
 import Users from "./Users";
 import Preloader from "../Common/Preloader/Preloader";
+import {usersAPI} from "../../api/api";
 
 
 class UsersAPI extends React.Component {
     componentDidMount() {
         this.props.toggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.usersCount}&page=${this.props.currentPage}`,{
-            withCredentials: true,
-        }).then(response => {
-            this.props.toggleIsFetching(false);
-            this.props.setUsers(response.data.items);
-            this.props.setTotalUsersCount(response.data.totalCount);
-        });
+        usersAPI.getUsers(this.props.usersCount, this.props.currentPage)
+            .then(data => {
+                this.props.toggleIsFetching(false);
+                this.props.setUsers(data.items);
+                this.props.setTotalUsersCount(data.totalCount);
+            });
     }
 
     pagesCountOnClick = (num) => {
         this.props.changeCurrentPage(num);
         this.props.toggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.usersCount}&page=${num}`, {
-            withCredentials: true,
-        }).then(response => {
+        usersAPI.getUsers(this.props.usersCount, num)
+            .then(data => {
             this.props.toggleIsFetching(false);
-            this.props.setUsers(response.data.items);
-            this.props.setTotalUsersCount(response.data.totalCount);
+            this.props.setUsers(data.items);
+            this.props.setTotalUsersCount(data.totalCount);
         });
     }
 
@@ -60,5 +58,7 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps, { followToggle, setUsers,
-    changeCurrentPage, setTotalUsersCount, toggleIsFetching, })(UsersAPI);
+export default connect(mapStateToProps, {
+    followToggle, setUsers,
+    changeCurrentPage, setTotalUsersCount, toggleIsFetching,
+})(UsersAPI);
