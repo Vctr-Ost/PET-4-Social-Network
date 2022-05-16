@@ -9,6 +9,18 @@
 	max-height: 50px;
 }
 
-.item {
-	color: red;
+.loginBtn {
+	position: relative;
+	font-size: 24px;
+	font-weight: 600;
+	color: #555555;
+	float: right;
+	top: 0;
+	left: 0;
+	padding: 10px;
+	cursor: pointer;
+	transition-duration: 0.2s;
+}
+.loginBtn:hover {
+	color: #931414;
 }

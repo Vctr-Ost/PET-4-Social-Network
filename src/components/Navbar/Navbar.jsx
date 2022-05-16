@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 function Navbar(props) {
 	return (
 		<nav className={style.nav}>
-			<div><NavLink className={style.item} to='/profile'>Profile</NavLink></div>
+			<div><NavLink className={style.item} to='/profile/2'>Profile</NavLink></div>
 			<div><NavLink className={style.item} to='/dialogs'>Messages</NavLink></div>
 			<div><NavLink className={style.item} to='/news'>News</NavLink></div>
 			<div><NavLink className={style.item} to='/music'>Music</NavLink></div>
