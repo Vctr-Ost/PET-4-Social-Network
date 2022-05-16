@@ -1,4 +1,5 @@
 import style from './ProfileInfo.module.css'
+import userNonPhoto from '../../../assets/images/profile_image.jpg'
 
 function ProfileInfo(props) {
     // debugger
@@ -9,7 +10,7 @@ function ProfileInfo(props) {
             </div>
             <div className={style.profInfo}>
                 <div className={style.avatar}>
-                    <img className={style.avatarImg} src={props.currentProfile.photos.large} alt='avatar'/>
+                    <img className={style.avatarImg} src={props.currentProfile.photos.large ? props.currentProfile.photos.large : userNonPhoto} alt='avatar'/>
                 </div>
                 <div>
                     <div className={style.name}>
