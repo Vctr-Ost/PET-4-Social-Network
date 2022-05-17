@@ -3,6 +3,7 @@ const SET_USERS = 'SET-USERS';
 const CHANGE_CURRENT_PAGE = 'CHANGE_CURRENT_PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
+const FOLLOW_IN_PROGRESS = 'FOLLOW_IN_PROGRESS';
 
 let initialState = {
     users: [],
@@ -10,6 +11,7 @@ let initialState = {
     totalUsersCount: 20,
     usersCount: 10,
     isFetching: false,
+    followInProgressArr: [],
 };
 
 function usersReducer(state = initialState, action) {
@@ -31,7 +33,6 @@ function usersReducer(state = initialState, action) {
                 ...state,
                 users: [...action.users],
             }
-            // return ((state.users.length > 0) ? state : {...state, users: [...state.users, ...action.users]});
         case CHANGE_CURRENT_PAGE:
             return {
                 ...state,
@@ -47,6 +48,13 @@ function usersReducer(state = initialState, action) {
                 ...state,
                 isFetching: action.isFetching,
             }
+        case FOLLOW_IN_PROGRESS:
+                return {
+                    ...state,
+                    followInProgressArr: action.boolean
+                        ? [...state.followInProgressArr, action.userID]
+                        : state.followInProgressArr.filter(id => id !== action.userID),
+                }
         default:
             return state;
     }
@@ -56,21 +64,24 @@ function usersReducer(state = initialState, action) {
 export function followToggle(userID, boolean) {
     return {type: FOLLOW_TOGGLE, userID, boolean}
 }
-// export function followToggle(ID) {
-//     return {type: FOLLOW_TOGGLE, userID: ID}
-// }
 
 export function setUsers(users) {
     return {type: SET_USERS, users}
 }
+
 export function changeCurrentPage(page) {
     return {type: CHANGE_CURRENT_PAGE, page}
 }
+
 export function setTotalUsersCount(num) {
     return {type: SET_TOTAL_USERS_COUNT, num}
 }
+
 export function toggleIsFetching(isFetching) {
     return {type: TOGGLE_IS_FETCHING, isFetching}
+}
+export function followInProgress(boolean, userID) {
+    return {type: FOLLOW_IN_PROGRESS, boolean, userID}
 }
 
 

@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import {
-    changeCurrentPage,
+    changeCurrentPage, followInProgress,
     followToggle,
     setTotalUsersCount,
     setUsers,
@@ -43,6 +43,8 @@ class UsersAPI extends React.Component {
                             followToggle={this.props.followToggle}
                             users={this.props.users}
                             toggleIsFetching={this.props.toggleIsFetching}
+                            isFollowInProgressArr={this.props.isFollowInProgressArr}
+                            followInProgress={this.props.followInProgress}
         />)
     }
 }
@@ -54,11 +56,12 @@ function mapStateToProps(state) {
         totalUsersCount: state.usersPage.totalUsersCount,
         usersCount: state.usersPage.usersCount,
         isFetching: state.usersPage.isFetching,
+        isFollowInProgressArr: state.usersPage.followInProgressArr,
     }
 }
 
 
 export default connect(mapStateToProps, {
-    followToggle, setUsers,
-    changeCurrentPage, setTotalUsersCount, toggleIsFetching,
+    followToggle, setUsers, changeCurrentPage,
+    setTotalUsersCount, toggleIsFetching, followInProgress
 })(UsersAPI);
