@@ -1,32 +1,22 @@
 import React from "react";
 import {connect} from "react-redux";
-import {updateCurrentProfile} from "../../redux/profileReducer";
+import {getStatus, profileUpdate, updateStatus} from "../../redux/profileReducer";
 import Profile from "./Profile";
 import {useParams} from "react-router-dom";
-import {profileAPI} from "../../api/api";
-import {withAuthRedirect} from "../../hoc/AuthRedirect";
-
-
 
 
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
         let userId = this.props.param.id;
-        this.props.updateCurrentProfile(null);
-        profileAPI.getProfile(userId)
-            .then(data => {
-                this.props.updateCurrentProfile(data);
-            })
+        this.props.profileUpdate(userId);
+        this.props.getStatus(userId);
     }
-
     render() {
         return <Profile {...this.props} />
     }
 }
 
-
-// const RedirectOnAuth = withAuthRedirect(ProfileContainer)
 
 const TakeParams = (props) => {
     return <ProfileContainer {...props} param={useParams()} />
@@ -35,6 +25,7 @@ const TakeParams = (props) => {
 function mapStateToProps(state) {
     return {
         currentProfile: state.profilePage.currentProfile,
+        userStatus: state.profilePage.userStatus
     }
 }
-export default connect(mapStateToProps, {updateCurrentProfile})(TakeParams)
+export default connect(mapStateToProps, {profileUpdate, getStatus, updateStatus})(TakeParams)

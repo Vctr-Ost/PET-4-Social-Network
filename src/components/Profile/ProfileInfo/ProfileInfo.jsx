@@ -5,9 +5,6 @@ import ProfileStatus from "./ProfileStatus";
 function ProfileInfo(props) {
     return (
         <>
-            <div>
-                <img className={style.headImg} src='https://wallpapercave.com/wp/wp6980736.jpg' alt='content image'/>
-            </div>
             <div className={style.profInfo}>
                 <div className={style.avatar}>
                     <img className={style.avatarImg}
@@ -16,7 +13,7 @@ function ProfileInfo(props) {
                 </div>
                 <div>
                     <div>
-                        <ProfileStatus status={'HELLO GUYS'}/>
+                        <ProfileStatus userStatus={props.userStatus} updateStatus={props.updateStatus}/>
                     </div>
                     <div className={style.name}>
                         {props.currentProfile.fullName}
