@@ -1,3 +1,5 @@
+import {authAPI} from "../api/api";
+
 const USER_AUTHORIZATION = 'USER_AUTHORIZATION';
 
 let initialState = {
@@ -22,5 +24,15 @@ function authReducer(state = initialState, action) {
 }
 
 export const userAuth = (userData) => ({type: USER_AUTHORIZATION, userData})
+
+export const isAuthResult = () => (dispatch) => {
+    authAPI.isAuth()
+        .then(data => {
+            if (!data.resultCode) {
+                let {email, id, login} = data.data;
+                dispatch(userAuth({email, id, login}))
+            }
+        })
+}
 
 export default authReducer;
