@@ -1,5 +1,6 @@
 import style from './ProfileInfo.module.css'
 import userNonPhoto from '../../../assets/images/profile_image.jpg'
+import ProfileStatus from "./ProfileStatus";
 
 function ProfileInfo(props) {
     return (
@@ -9,17 +10,21 @@ function ProfileInfo(props) {
             </div>
             <div className={style.profInfo}>
                 <div className={style.avatar}>
-                    <img className={style.avatarImg} src={props.currentProfile.photos.large ? props.currentProfile.photos.large : userNonPhoto} alt='avatar'/>
+                    <img className={style.avatarImg}
+                         src={props.currentProfile.photos.large ? props.currentProfile.photos.large : userNonPhoto}
+                         alt='avatar'/>
                 </div>
                 <div>
+                    <div>
+                        <ProfileStatus status={'HELLO GUYS'}/>
+                    </div>
                     <div className={style.name}>
                         {props.currentProfile.fullName}
                     </div>
                     <div className={style.info}>
-                        <div className={style.item}>Status: {props.currentProfile.aboutMe === null
-                            ? "I haven't status" : props.currentProfile.aboutMe}</div>
-                        <div className={style.item}>Loocking for a job: {props.currentProfile.lookingForAJobDescription === null
-                            ? "I don't want to work" : props.currentProfile.lookingForAJobDescription}</div>
+                        <div className={style.item}>Loocking for a
+                            job: {props.currentProfile.lookingForAJobDescription === null
+                                ? "I don't want to work" : props.currentProfile.lookingForAJobDescription}</div>
                     </div>
                 </div>
             </div>

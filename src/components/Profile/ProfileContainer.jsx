@@ -26,9 +26,10 @@ class ProfileContainer extends React.Component {
 }
 
 
-const RedirectOnAuth = withAuthRedirect(ProfileContainer)
+// const RedirectOnAuth = withAuthRedirect(ProfileContainer)
+
 const TakeParams = (props) => {
-    return <RedirectOnAuth {...props} param={useParams()} />
+    return <ProfileContainer {...props} param={useParams()} />
 }
 
 function mapStateToProps(state) {
