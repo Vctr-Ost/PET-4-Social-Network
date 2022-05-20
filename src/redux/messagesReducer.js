@@ -73,11 +73,11 @@ function messageReducer(state = initialState, action) {
     }
 }
 
-export function updateMessageTextActionCreator(message) {
+export function updateMessageText(message) {
     return {type: UPDATE_MESSAGE_TEXT, text: message};
 }
 
-export function addMessageActionCreator(message) {
+export function addMessage(message) {
     return {type: SEND_MESSAGE}
 }
 

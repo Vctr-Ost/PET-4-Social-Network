@@ -3,6 +3,7 @@ import Navbar from './components/Navbar/Navbar';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
+import Login from "./components/Login/Login";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Friends from "./components/Friends/Friends";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
@@ -25,6 +26,7 @@ function App(props) {
                         <Route path='/news' element={<News/>}/>
                         <Route path='/music' element={<Music/>}/>
                         <Route path='/settings' element={<Settings/>}/>
+                        <Route path='/login' element={<Login/>}/>
 
                         {/*<Route path='/friends' element={<Friends/>} />*/}
                         <Route path='/friends' element={<UsersContainer/>} />

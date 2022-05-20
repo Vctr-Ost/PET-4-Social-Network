@@ -1,5 +1,4 @@
-import React from 'react'
-import {addMessageActionCreator, updateMessageTextActionCreator} from "../../redux/messagesReducer";
+import {addMessage, updateMessageText} from "../../redux/messagesReducer";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 
@@ -8,19 +7,13 @@ function mapStateToProps(state) {
         newMessageText: state.messagesPage.newMessageText,
         messagesData: state.messagesPage.messagesData,
         dialogsData: state.messagesPage.dialogsData,
-    }
-}
-function mapDispatchToProps(dispatch) {
-    return {
-        addMessage: () => {
-            dispatch(addMessageActionCreator())
-        },
-        updateMessageText: (text) => {
-            dispatch(updateMessageTextActionCreator(text))
-        },
+        isAuth: state.auth.isAuth,
     }
 }
 
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
+const DialogsContainer = connect(mapStateToProps, {
+    addMessage: addMessage,
+    updateMessageText: updateMessageText,
+})(Dialogs);
 
 export default DialogsContainer;
