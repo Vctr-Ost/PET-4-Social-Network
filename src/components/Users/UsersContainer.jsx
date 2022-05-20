@@ -31,6 +31,7 @@ class UsersAPI extends React.Component {
     }
 }
 
+
 function mapStateToProps(state) {
     return {
         users: state.usersPage.users,
@@ -41,7 +42,6 @@ function mapStateToProps(state) {
         isFollowInProgressArr: state.usersPage.followInProgressArr,
     }
 }
-
 
 export default connect(mapStateToProps, {
     changeCurrentPage, getUsers, follow, unfollow
