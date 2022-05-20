@@ -43,6 +43,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, {
-    changeCurrentPage, getUsers, follow, unfollow
-})(UsersAPI);
+export default connect(mapStateToProps, {changeCurrentPage, getUsers, follow, unfollow})(UsersAPI);

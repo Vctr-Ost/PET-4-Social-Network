@@ -16,9 +16,10 @@ function ProfileInfo(props) {
                         {props.currentProfile.fullName}
                     </div>
                     <div className={style.info}>
-                        <div className={style.item}>Date of birth: 06 May</div>
-                        <div className={style.item}>City: Kyiv</div>
-                        <div className={style.item}>Education: NULES</div>
+                        <div className={style.item}>Status: {props.currentProfile.aboutMe === null
+                            ? "I haven't status" : props.currentProfile.aboutMe}</div>
+                        <div className={style.item}>Loocking for a job: {props.currentProfile.lookingForAJobDescription === null
+                            ? "I don't want to work" : props.currentProfile.lookingForAJobDescription}</div>
                     </div>
                 </div>
             </div>

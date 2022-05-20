@@ -4,7 +4,10 @@ import {updateCurrentProfile} from "../../redux/profileReducer";
 import Profile from "./Profile";
 import {useParams} from "react-router-dom";
 import {profileAPI} from "../../api/api";
-import {AuthRedirect} from "../../hoc/AuthRedirect";
+import {withAuthRedirect} from "../../hoc/AuthRedirect";
+
+
+
 
 
 class ProfileContainer extends React.Component {
@@ -22,7 +25,8 @@ class ProfileContainer extends React.Component {
     }
 }
 
-const RedirectOnAuth = AuthRedirect(ProfileContainer)
+
+const RedirectOnAuth = withAuthRedirect(ProfileContainer)
 const TakeParams = (props) => {
     return <RedirectOnAuth {...props} param={useParams()} />
 }
